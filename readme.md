@@ -1,27 +1,46 @@
-# Laravel PHP Framework
+# Heroku Demo App
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This app demonstrates how to use the [laravel-memcached-plus](https://github.com/b3it/laravel-memcached-plus)
+package with [Laravel 5.2](http://laravel.com/docs/5.2) on [Heroku](http://heroku.com) with the
+[MemCachier](https://devcenter.heroku.com/articles/memcachier) addon.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+If you want to have a click around and see the code working this
+app is already running [here](https://laravel-memcached-plus-demo.herokuapp.com/).
+See [`/app/Http/routes.php`](https://github.com/b3it/laravel-memcached-plus-demo/blob/master/app/Http/routes.php)
+for the test URLs available.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Deploy your own
 
-## Official Documentation
+To have a tinker or just for fun you may want to deploy your own!
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+### Automatic
 
-## Contributing
+This button will deploy this to a new app on your Heroku account, complete with all configuration
+and the MemCachier free addon.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-## Security Vulnerabilities
+### Manual
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+If you're rolling your own you should configure your Heroku environment something like this:
 
-## License
+```
+heroku config:set   APP_ENV=development\
+                    APP_DEBUG=true\
+                    APP_KEY=base64:`dd if=/dev/random bs=1 count=32 2>/dev/null | base64`\
+                    APP_URL=`heroku apps:info --shell | grep web-url | sed "s/web-url=//" | sed "s/\/$//" `\
+                    CACHE_DRIVER=memcachedfoo\
+                    SESSION_DRIVER=memcached
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+heroku addons:add memcachier:dev
+```
+
+## Laravel on Heroku
+
+This is just a fresh Laravel 5.2 installation with changes detailed in [the latest commit](https://github.com/b3it/laravel-memcached-plus-demo/commits/master).
+
+So memcached aside it may be useful for you to see how to run Laravel 5.* on Heroku!
+
+## Support
+
+Do let me know if you have any questions!

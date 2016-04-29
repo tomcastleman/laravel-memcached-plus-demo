@@ -1,0 +1,23 @@
+{
+  "name": "laravel-memcached-plus-demo",
+  "description": "Demonstrates how to use the laravel-memcached-plus package.",
+  "keywords": [
+    "laravel-memcached-plus",
+    "memcachier",
+    "memcachedcloud"
+  ],
+  "env": {
+    "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-php",
+    "APP_KEY": {
+      "description": "Laravel App Key.",
+      "generator": "secret"
+    },
+    "APP_ENV": "development",
+    "APP_DEBUG": "true",
+    "CACHE_DRIVER": "memcached",
+    "SESSION_DRIVER": "memcached"
+  },
+  "addons": [
+    "memcachier:dev"
+  ]
+}

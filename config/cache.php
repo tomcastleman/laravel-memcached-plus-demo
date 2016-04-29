@@ -57,6 +57,29 @@ return [
                 ],
             ],
         ],
+        
+        'memcachedfoo' => [
+            'driver' => 'memcached',
+            'persistent_id' => 'laravel_pool',
+            'sasl' => [
+                env('MEMCACHIER_USERNAME'),
+                env('MEMCACHIER_PASSWORD'),
+            ],
+            'options' => [
+                Memcached::OPT_NO_BLOCK => true,
+                Memcached::OPT_AUTO_EJECT_HOSTS => true,
+                Memcached::OPT_CONNECT_TIMEOUT => 2000,
+                Memcached::OPT_POLL_TIMEOUT => 2000,
+                Memcached::OPT_RETRY_TIMEOUT => 2,
+            ],
+            'servers' => [
+                [
+                    'host' => parse_url(env('MEMCACHIER_SERVERS'), PHP_URL_HOST),
+                    'port' => parse_url(env('MEMCACHIER_SERVERS'), PHP_URL_PORT),
+                    'weight' => 100,
+                ],
+            ],
+        ],
 
         'redis' => [
             'driver' => 'redis',
