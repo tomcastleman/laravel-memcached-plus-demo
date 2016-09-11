@@ -5,8 +5,7 @@ new Vue({
         cacheValue: '',
         cacheValueServer: '',
         sessionCounter: 0,
-        sessionAll: '',
-        sessionDebug: '',
+        sessionAll: ''
     },
     computed: {
         cacheGettable: function() {
@@ -43,14 +42,9 @@ new Vue({
                 this.sessionCounterRefresh();
             }).bind(this);
         },
-        sessionAll: function () {
+        sessionAllGet: function () {
             this.$http['get']('/session/all').then(function(response) {
                 this.sessionAll = response.data.data;
-            }).bind(this);
-        },
-        sessionDebug: function () {
-            this.$http['get']('/session/debug').then(function(response) {
-                this.sessionDebug = response.data.data;
             }).bind(this);
         }
     },

@@ -70,17 +70,8 @@
                     <button v-on:click="sessionCounterReset" class="btn btn-default">Reset</button>
 
                     <h4>All</h4>
-                    <div class="form-group">
-                        <textarea readonly="readonly" class="form-control" placeholder="All">@{{ sessionAll }}</textarea>
-                    </div>
-                    <button v-on:click="sessionAll" class="btn btn-default">All</button>
-
-                    <h4>Debug</h4>
-                    <div class="form-group">
-                        <textarea readonly="readonly" class="form-control" placeholder="Debug">@{{ sessionDebug }}</textarea>
-                    </div>
-                    <button v-on:click="sessionDebug" class="btn btn-default">Debug</button>
-
+                    <button v-on:click="sessionAllGet" class="btn btn-default">All</button>
+                    <pre>@{{ sessionAll | json }}</pre>
                 </div>
             </div>
         </div>
